@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Menu from './src/templates/Menu/Menu';
+import Car from './src/templates/Car/Car';
+import Van from './src/templates/Van/Van';
+import Motorcycle from './src/templates/Motorcycle/Motorcycle';
+
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const Stack = createNativeStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  return (
+    <NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen name="Menu" component={Menu}/>
+            <Stack.Screen name="Car" component={Car}/>
+            <Stack.Screen name="Van" component={Van}/>
+            <Stack.Screen name="Truck" component={Van}/>
+            <Stack.Screen name="Motorcycle" component={Motorcycle}/>
+        </Stack.Navigator>
+    </NavigationContainer>);
+}
